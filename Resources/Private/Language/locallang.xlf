@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2014-10-26T19:40:11Z" product-name="flush_language_cache">
+		<header/>
+		<body>
+			<trans-unit id="flushLanguageCache" xml:space="preserve">
+				<source>Flush language cache</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>
