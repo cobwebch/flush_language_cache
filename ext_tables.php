@@ -13,5 +13,7 @@ if (!defined ('TYPO3_MODE')) {
 // Register additional clear cache menu item
 $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['additionalBackendItems']['cacheActions']['flushLanguageCache'] = 'Cobweb\\FlushLanguageCache\\Toolbar\\ToolbarItem';
 
-// Register AJAX handler for flush language cache action
-$TYPO3_CONF_VARS['BE']['AJAX']['language_cache::flushCache'] = 'Cobweb\\FlushLanguageCache\\Toolbar\\ToolbarItem->flushCache';
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::registerAjaxHandler (
+	'language_cache::flushCache',
+	'Cobweb\\FlushLanguageCache\\Toolbar\\ToolbarItem->flushCache'
+);
