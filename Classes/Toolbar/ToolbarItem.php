@@ -39,7 +39,7 @@ class ToolbarItem implements \TYPO3\CMS\Backend\Toolbar\ClearCacheActionsHookInt
 				'id'    => self::$itemKey,
 				'title' => $this->getLanguageService()->sL('LLL:EXT:flush_language_cache/Resources/Private/Language/locallang.xlf:flushLanguageCache'),
 				'href'  => BackendUtility::getAjaxUrl('language_cache::flushCache'),
-				'icon'  => IconUtility::getSpriteIcon('extensions-flush_language_cache-flush_cache')
+				'icon'  => $this->getLanguageFlushCacheIcon()
 			);
 			$optionValues[] = self::$itemKey;
 		}
@@ -72,5 +72,17 @@ class ToolbarItem implements \TYPO3\CMS\Backend\Toolbar\ClearCacheActionsHookInt
 	 */
 	protected function getLanguageService() {
 		return $GLOBALS['LANG'];
+	}
+
+	/**
+	 * @return string Icon MarkUp
+	 */
+	public function getLanguageFlushCacheIcon() {
+		if (version_compare(TYPO3_version, '7.6', '>=')) {
+			$iconFactory = GeneralUtility::makeInstance('TYPO3\\CMS\\Core\\Imaging\\IconFactory');
+			return $iconFactory->getIcon('extensions-flush_language_cache-flush_cache', \TYPO3\CMS\Core\Imaging\Icon::SIZE_SMALL)->render();
+		}else{
+			return IconUtility::getSpriteIcon('extensions-flush_language_cache-flush_cache');
+		}
 	}
 }
