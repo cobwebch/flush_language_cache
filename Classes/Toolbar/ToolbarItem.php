@@ -34,7 +34,7 @@ class ToolbarItem implements \TYPO3\CMS\Backend\Toolbar\ClearCacheActionsHookInt
 	 * @return void
 	 */
 	public function manipulateCacheActions(&$cacheActions, &$optionValues) {
-		if ($this->getBackendUser()->isAdmin()) {
+		if ($this->getBackendUser()->isAdmin() || $this->getBackendUser()->getTSConfigVal('options.clearCache.flushLanguageCache')) {
 			$cacheActions[] = array(
 				'id'    => self::$itemKey,
 				'title' => $this->getLanguageService()->sL('LLL:EXT:flush_language_cache/Resources/Private/Language/locallang.xlf:flushLanguageCache'),
