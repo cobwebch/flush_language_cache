@@ -10,7 +10,7 @@
 
 $EM_CONF[$_EXTKEY] = array (
   'title' => 'Flush language cache',
-  'description' => 'Adds an item to the flush cache menu to clear just the language (l10n) cache.',
+  'description' => 'Adds an item to the flush cache menu to clear just the language (l10n) cache. Also provides a command-line tool for that.',
   'category' => 'be',
   'state' => 'stable',
   'uploadfolder' => 0,
@@ -19,7 +19,7 @@ $EM_CONF[$_EXTKEY] = array (
   'author' => 'Francois Suter',
   'author_email' => 'typo3@cobweb.ch',
   'author_company' => '',
-  'version' => '1.1.0',
+  'version' => '2.0.0',
   'constraints' =>
   array (
     'depends' =>
