@@ -14,9 +14,10 @@ namespace Cobweb\FlushLanguageCache\Toolbar;
  * The TYPO3 project - inspiring people to share!
  */
 
+use TYPO3\CMS\Backend\Routing\UriBuilder;
 use TYPO3\CMS\Backend\Toolbar\ClearCacheActionsHookInterface;
+use TYPO3\CMS\Core\Cache\CacheManager;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Backend\Utility\BackendUtility;
 
 /**
  * Prepares additional flush cache entry.
@@ -36,13 +37,21 @@ class ToolbarItem implements ClearCacheActionsHookInterface {
 	 */
 	public function manipulateCacheActions(&$cacheActions, &$optionValues) {
 		if ($this->getBackendUser()->isAdmin()) {
-			$cacheActions[] = array(
-				'id' => self::$itemKey,
-				'title' => 'LLL:EXT:flush_language_cache/Resources/Private/Language/locallang.xlf:flushLanguageCache',
-				'href' => BackendUtility::getAjaxUrl('language_cache::flushCache'),
-				'iconIdentifier'  => 'tx_flushlanguagecache_flush'
-			);
-			$optionValues[] = self::$itemKey;
+            /** @var UriBuilder $uriBuilder */
+            $uriBuilder = GeneralUtility::makeInstance(UriBuilder::class);
+            try {
+                $uri = $uriBuilder->buildUriFromRoute('ajax_tx_flushlanguagecache_clear');
+                $cacheActions[] = [
+                    'id' => self::$itemKey,
+                    'title' => 'LLL:EXT:flush_language_cache/Resources/Private/Language/locallang.xlf:flushLanguageCache',
+                     'description' => 'LLL:EXT:flush_language_cache/Resources/Private/Language/locallang.xlf:flushLanguageCache.description',
+                    'href' => $uri,
+                    'iconIdentifier'  => 'tx_flushlanguagecache_flush'
+                ];
+                $optionValues[] = self::$itemKey;
+            } catch (\TYPO3\CMS\Backend\Routing\Exception\RouteNotFoundException $e) {
+                // Do nothing, i.e. do not add the menu item if the AJAX route cannot be found
+            }
 		}
 	}
 
@@ -53,7 +62,7 @@ class ToolbarItem implements ClearCacheActionsHookInterface {
 	 */
 	public function flushCache() {
 		/** @var \TYPO3\CMS\Core\Cache\Frontend\FrontendInterface $cacheFrontend */
-		$cacheFrontend = GeneralUtility::makeInstance('TYPO3\\CMS\\Core\\Cache\\CacheManager')->getCache('l10n');
+		$cacheFrontend = GeneralUtility::makeInstance(CacheManager::class)->getCache('l10n');
 		$cacheFrontend->flush();
 	}
 
@@ -64,14 +73,5 @@ class ToolbarItem implements ClearCacheActionsHookInterface {
 	 */
 	protected function getBackendUser() {
 		return $GLOBALS['BE_USER'];
-	}
-
-	/**
-	 * Wrapper around the global language object.
-	 *
-	 * @return \TYPO3\CMS\Lang\LanguageService
-	 */
-	protected function getLanguageService() {
-		return $GLOBALS['LANG'];
 	}
 }

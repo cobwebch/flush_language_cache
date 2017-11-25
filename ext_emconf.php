@@ -10,7 +10,7 @@
 
 $EM_CONF[$_EXTKEY] = array (
   'title' => 'Flush language cache',
-  'description' => 'Adds an item to the flush cache menu to flush just the language (l10n) cache.',
+  'description' => 'Adds an item to the flush cache menu to clear just the language (l10n) cache.',
   'category' => 'be',
   'state' => 'stable',
   'uploadfolder' => 0,

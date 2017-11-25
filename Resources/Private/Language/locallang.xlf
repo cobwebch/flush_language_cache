@@ -6,6 +6,9 @@
 			<trans-unit id="flushLanguageCache" xml:space="preserve">
 				<source>Flush language cache</source>
 			</trans-unit>
+			<trans-unit id="flushLanguageCache.description" xml:space="preserve">
+				<source>Clear the cache for all localized strings (locallang files).</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
