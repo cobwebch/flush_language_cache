@@ -19,23 +19,20 @@ $EM_CONF[$_EXTKEY] = array (
   'author' => 'Francois Suter',
   'author_email' => 'typo3@cobweb.ch',
   'author_company' => '',
-  'version' => '1.0.1',
-  'constraints' => 
+  'version' => '1.1.0',
+  'constraints' =>
   array (
-    'depends' => 
+    'depends' =>
     array (
-      'typo3' => '6.2.0-7.99.99',
+      'typo3' => '8.7.0-8.99.99',
     ),
-    'conflicts' => 
+    'conflicts' =>
     array (
     ),
-    'suggests' => 
+    'suggests' =>
     array (
     ),
   ),
-  '_md5_values_when_last_written' => 'a:7:{s:11:"LICENSE.txt";s:4:"b234";s:10:"README.rst";s:4:"f7cb";s:12:"ext_icon.png";s:4:"8064";s:14:"ext_tables.php";s:4:"e62e";s:31:"Classes/Toolbar/ToolbarItem.php";s:4:"a2ae";s:40:"Resources/Private/Language/locallang.xlf";s:4:"34a9";s:38:"Resources/Public/Images/FlushCache.png";s:4:"8064";}',
-  'comment' => 'Corrected API usage, fixed compatibility with TYPO3 CMS 7.4.',
-  'user' => 'francois',
 );
 
 ?>

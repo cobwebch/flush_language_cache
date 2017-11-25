@@ -13,7 +13,8 @@ namespace Cobweb\FlushLanguageCache\Toolbar;
  *
  * The TYPO3 project - inspiring people to share!
  */
-use TYPO3\CMS\Backend\Utility\IconUtility;
+
+use TYPO3\CMS\Backend\Toolbar\ClearCacheActionsHookInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Backend\Utility\BackendUtility;
 
@@ -23,8 +24,8 @@ use TYPO3\CMS\Backend\Utility\BackendUtility;
  * @package Cobweb\ClearLanguageCache\Toolbar
  * @author Francois Suter <support@cobweb.ch>
  */
-class ToolbarItem implements \TYPO3\CMS\Backend\Toolbar\ClearCacheActionsHookInterface {
-	static $itemKey = 'flushLanguageCache';
+class ToolbarItem implements ClearCacheActionsHookInterface {
+	static public $itemKey = 'flushLanguageCache';
 
 	/**
 	 * Adds the flush language cache menu item.
@@ -36,10 +37,10 @@ class ToolbarItem implements \TYPO3\CMS\Backend\Toolbar\ClearCacheActionsHookInt
 	public function manipulateCacheActions(&$cacheActions, &$optionValues) {
 		if ($this->getBackendUser()->isAdmin()) {
 			$cacheActions[] = array(
-				'id'    => self::$itemKey,
-				'title' => $this->getLanguageService()->sL('LLL:EXT:flush_language_cache/Resources/Private/Language/locallang.xlf:flushLanguageCache'),
-				'href'  => BackendUtility::getAjaxUrl('language_cache::flushCache'),
-				'icon'  => IconUtility::getSpriteIcon('extensions-flush_language_cache-flush_cache')
+				'id' => self::$itemKey,
+				'title' => 'LLL:EXT:flush_language_cache/Resources/Private/Language/locallang.xlf:flushLanguageCache',
+				'href' => BackendUtility::getAjaxUrl('language_cache::flushCache'),
+				'iconIdentifier'  => 'tx_flushlanguagecache_flush'
 			);
 			$optionValues[] = self::$itemKey;
 		}
