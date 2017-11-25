@@ -36,7 +36,7 @@ class ToolbarItem implements ClearCacheActionsHookInterface {
 	 * @return void
 	 */
 	public function manipulateCacheActions(&$cacheActions, &$optionValues) {
-		if ($this->getBackendUser()->isAdmin()) {
+        if ($this->getBackendUser()->isAdmin() || $this->getBackendUser()->getTSConfigVal('options.clearCache.flushLanguageCache')) {
             /** @var UriBuilder $uriBuilder */
             $uriBuilder = GeneralUtility::makeInstance(UriBuilder::class);
             try {

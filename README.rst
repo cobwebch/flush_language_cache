@@ -12,6 +12,18 @@ This extension requires TYPO3 CMS 8.7 or more.
 Just install it and flush the system cache. Reload the backend and the new
 item will appear in the flush cache menu.
 
+
+User TSconfig
+-------------
+
+It is possible to give access to this flush cache option to ordinary backend users
+with the following User TSconfig:
+
+.. code:: typoscript
+
+   options.clearCache.flushLanguageCache = 1
+
+
 Credits
 -------
 
