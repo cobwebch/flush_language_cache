@@ -12,6 +12,12 @@ This extension requires TYPO3 CMS 8.7 or more.
 Just install it and flush the system cache. Reload the backend and the new
 item will appear in the flush cache menu.
 
+There is also a command-line tool that can be called with:
+
+.. code:: text
+
+   path/to/php path/to/bin/typo3 languagecache:flush
+
 
 User TSconfig
 -------------
