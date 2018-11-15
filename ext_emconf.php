@@ -8,31 +8,23 @@
 * https://github.com/t3elmar/Ext
 *********************************************************************/
 
-$EM_CONF[$_EXTKEY] = array (
-  'title' => 'Flush language cache',
-  'description' => 'Adds an item to the flush cache menu to clear just the language (l10n) cache. Also provides a command-line tool for that.',
-  'category' => 'be',
-  'state' => 'stable',
-  'uploadfolder' => 0,
-  'createDirs' => '',
-  'clearCacheOnLoad' => 1,
-  'author' => 'Francois Suter',
-  'author_email' => 'typo3@cobweb.ch',
-  'author_company' => '',
-  'version' => '2.0.0',
-  'constraints' =>
-  array (
-    'depends' =>
-    array (
-      'typo3' => '8.7.0-9.99.99',
-    ),
-    'conflicts' =>
-    array (
-    ),
-    'suggests' =>
-    array (
-    ),
-  ),
-);
-
-?>
+$EM_CONF[$_EXTKEY] = [
+    'title' => 'Flush language cache',
+    'description' => 'Adds an item to the flush cache menu to clear just the language (l10n) cache. Also provides a command-line tool for that.',
+    'category' => 'be',
+    'state' => 'stable',
+    'uploadfolder' => 0,
+    'createDirs' => '',
+    'clearCacheOnLoad' => 1,
+    'author' => 'Francois Suter',
+    'author_email' => 'typo3@cobweb.ch',
+    'author_company' => '',
+    'version' => '2.1.0',
+    'constraints' => [
+        'depends' => [
+            'typo3' => '9.5.0-9.5.99',
+        ],
+        'conflicts' => [],
+        'suggests' => [],
+    ],
+];

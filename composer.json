@@ -16,9 +16,8 @@
 			"Cobweb\\FlushLanguageCache\\": "Classes/"
 		}
 	},
-	"version": "2.0.0",
 	"require": {
-		"typo3/cms-core": ">=8.7.0,<10.0"
+		"typo3/cms-core": "^9.5"
 	},
 	"replace": {
 		"flush_language_cache": "self.version",
