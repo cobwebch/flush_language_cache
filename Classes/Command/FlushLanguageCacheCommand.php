@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 namespace Cobweb\FlushLanguageCache\Command;
 
 /**
@@ -47,6 +49,7 @@ class FlushLanguageCacheCommand extends Command
      * @param OutputInterface $output
      *
      * @return void
+     * @throws \TYPO3\CMS\Core\Cache\Exception\NoSuchCacheException
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
