@@ -37,3 +37,5 @@ The icon is based on the following images:
 
 * thunderbolt by H Alberto Gongora from the Noun Project
 * chat bubble by Tereza Moravcová from the Noun Project
+
+Thanks to Dmytro Nozdrin for the TYPO3 9 compatibility update and some code cleanup.
