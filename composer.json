@@ -16,7 +16,6 @@
 			"Cobweb\\FlushLanguageCache\\": "Classes/"
 		}
 	},
-	"version": "2.1.1",
 	"require": {
 		"php": ">=7.0.0,<7.5",
 		"typo3/cms-core": ">=8.7.14,<10.0"
