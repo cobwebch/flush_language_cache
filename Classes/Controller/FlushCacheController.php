@@ -32,17 +32,14 @@ class FlushCacheController
      * Flushes the language cache (l10n).
      *
      * @param ServerRequestInterface $request the current request
-     * @param ResponseInterface $response the current response
      * @return ResponseInterface
      * @throws \TYPO3\CMS\Core\Cache\Exception\NoSuchCacheException
      */
-    public function flushCache(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
+    public function flushCache(ServerRequestInterface $request): ResponseInterface
     {
-        /** @var \TYPO3\CMS\Core\Cache\Frontend\FrontendInterface $cacheFrontend */
         $cacheFrontend = GeneralUtility::makeInstance(CacheManager::class)->getCache('l10n');
         $cacheFrontend->flush();
 
-        $response->getBody()->write('');
-        return $response;
+        return new \TYPO3\CMS\Core\Http\NullResponse();
     }
 }

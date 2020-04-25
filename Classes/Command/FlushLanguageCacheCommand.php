@@ -48,17 +48,28 @@ class FlushLanguageCacheCommand extends Command
      * @param InputInterface $input
      * @param OutputInterface $output
      *
-     * @return void
-     * @throws \TYPO3\CMS\Core\Cache\Exception\NoSuchCacheException
+     * @return int
      */
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        /** @var \TYPO3\CMS\Core\Cache\Frontend\FrontendInterface $cacheFrontend */
-        $cacheFrontend = GeneralUtility::makeInstance(CacheManager::class)->getCache('l10n');
-        $cacheFrontend->flush();
-
         $io = new SymfonyStyle($input, $output);
-        $io->success('Done clearing the language cache (l10n).');
-        $io->note('If you still don\'t see what you want, you may want to update the TYPO3 language packs.');
+        try {
+            $cacheFrontend = GeneralUtility::makeInstance(CacheManager::class)->getCache('l10n');
+            $cacheFrontend->flush();
+
+            $io->success('Done clearing the language cache (l10n).');
+            $io->note('If you still don\'t see what you want, you may want to update the TYPO3 language packs.');
+            return Command::SUCCESS;
+        } catch (\Exception $e) {
+            $io->success(
+                    sprintf(
+                            'Faile clearing the language cache (l10n). Error: %s (%d)',
+                            $e->getMessage(),
+                            $e->getCode()
+                    )
+            );
+            return Command::FAILURE;
+        }
+
     }
 }
