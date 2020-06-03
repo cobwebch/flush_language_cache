@@ -65,7 +65,7 @@ class FlushLanguageCacheCommand extends Command
         } catch (\Exception $e) {
             $io->error(
                     sprintf(
-                            'Faile clearing the language cache (l10n). Error: %s (%d)',
+                            'Failed to clear the language cache (l10n). Error: %s (%d)',
                             $e->getMessage(),
                             $e->getCode()
                     )
