@@ -63,7 +63,7 @@ class FlushLanguageCacheCommand extends Command
             $io->note('If you still don\'t see what you want, you may want to update the TYPO3 language packs.');
             return static::SUCCESS;
         } catch (\Exception $e) {
-            $io->success(
+            $io->error(
                     sprintf(
                             'Faile clearing the language cache (l10n). Error: %s (%d)',
                             $e->getMessage(),
