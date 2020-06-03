@@ -30,6 +30,8 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  */
 class FlushLanguageCacheCommand extends Command
 {
+    public const SUCCESS = 0;
+    public const FAILURE = 1;
 
     /**
      * Configures the command by setting its name, description and options.
@@ -59,7 +61,7 @@ class FlushLanguageCacheCommand extends Command
 
             $io->success('Done clearing the language cache (l10n).');
             $io->note('If you still don\'t see what you want, you may want to update the TYPO3 language packs.');
-            return 1;
+            return static::SUCCESS;
         } catch (\Exception $e) {
             $io->success(
                     sprintf(
@@ -68,7 +70,7 @@ class FlushLanguageCacheCommand extends Command
                             $e->getCode()
                     )
             );
-            return 0;
+            return static::FAILURE;
         }
 
     }
