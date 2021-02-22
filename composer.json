@@ -22,5 +22,10 @@
 	},
 	"replace": {
 		"typo3-ter/flush_language_cache": "self.version"
+	},
+	"extra": {
+		"typo3/cms": {
+			"extension-key": "flush_language_cache"
+		}
 	}
 }
