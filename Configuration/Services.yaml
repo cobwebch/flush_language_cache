@@ -1,0 +1,16 @@
+# Configuration/Services.yaml
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  Cobweb\FlushLanguageCache\:
+    resource: '../Classes/*'
+
+  Cobweb\FlushLanguageCache\Command\FlushLanguageCacheCommand:
+    tags:
+      - name: 'console.command'
+        command: 'languagecache:flush'
+        description: 'Clears the language cache (l10n).'
+        schedulable: true
