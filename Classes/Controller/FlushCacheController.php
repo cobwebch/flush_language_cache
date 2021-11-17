@@ -19,6 +19,8 @@ namespace Cobweb\FlushLanguageCache\Controller;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use TYPO3\CMS\Core\Cache\CacheManager;
+use TYPO3\CMS\Core\Cache\Exception\NoSuchCacheException;
+use TYPO3\CMS\Core\Http\NullResponse;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
@@ -33,13 +35,13 @@ class FlushCacheController
      *
      * @param ServerRequestInterface $request the current request
      * @return ResponseInterface
-     * @throws \TYPO3\CMS\Core\Cache\Exception\NoSuchCacheException
+     * @throws NoSuchCacheException
      */
     public function flushCache(ServerRequestInterface $request): ResponseInterface
     {
         $cacheFrontend = GeneralUtility::makeInstance(CacheManager::class)->getCache('l10n');
         $cacheFrontend->flush();
 
-        return new \TYPO3\CMS\Core\Http\NullResponse();
+        return new NullResponse();
     }
 }

@@ -19,13 +19,11 @@ namespace Cobweb\FlushLanguageCache\Toolbar;
 use TYPO3\CMS\Backend\Routing\Exception\RouteNotFoundException;
 use TYPO3\CMS\Backend\Routing\UriBuilder;
 use TYPO3\CMS\Backend\Toolbar\ClearCacheActionsHookInterface;
+use TYPO3\CMS\Core\Authentication\BackendUserAuthentication;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
  * Prepares additional flush cache entry.
- *
- * @package Cobweb\ClearLanguageCache\Toolbar
- * @author Francois Suter <typo3@cobweb.ch>
  */
 class ToolbarItem implements ClearCacheActionsHookInterface
 {
@@ -65,9 +63,9 @@ class ToolbarItem implements ClearCacheActionsHookInterface
     /**
      * Wrapper around the global BE user object.
      *
-     * @return \TYPO3\CMS\Core\Authentication\BackendUserAuthentication
+     * @return BackendUserAuthentication
      */
-    protected function getBackendUser()
+    protected function getBackendUser(): BackendUserAuthentication
     {
         return $GLOBALS['BE_USER'];
     }
