@@ -2,7 +2,7 @@
 	"name": "cobweb/flush_language_cache",
 	"type": "typo3-cms-extension",
 	"description": "Adds an item to the flush cache menu to clear just the language (l10n) cache. Also provides a command-line tool for that.",
-	"version": "3.0.1",
+	"version": "3.0.2",
 	"license": [
 		"GPL-2.0+"
 	],
