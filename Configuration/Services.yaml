@@ -14,3 +14,8 @@ services:
         command: 'languagecache:flush'
         description: 'Clears the language cache (l10n).'
         schedulable: true
+
+  Cobweb\FlushLanguageCache\EventListener\ClearCacheListener:
+    tags:
+      - name: event.listener
+        identifier: 'flush-language-cache/flush'
