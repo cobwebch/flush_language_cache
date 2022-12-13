@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Cobweb\FlushLanguageCache\Command;
@@ -30,18 +31,16 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  */
 class FlushLanguageCacheCommand extends Command
 {
-    public const SUCCESS = 0;
-    public const FAILURE = 1;
 
     /**
      * Configures the command by setting its name, description and options.
      *
      * @return void
      */
-    public function configure()
+    public function configure(): void
     {
         $this->setDescription('Clears the language cache (l10n).')
-                ->setHelp('Just run the command and the whole language cache will be cleared.');
+            ->setHelp('Just run the command and the whole language cache will be cleared.');
     }
 
     /**
@@ -61,17 +60,16 @@ class FlushLanguageCacheCommand extends Command
 
             $io->success('Done clearing the language cache (l10n).');
             $io->note('If you still don\'t see what you want, you may want to update the TYPO3 language packs.');
-            return static::SUCCESS;
+            return Command::SUCCESS;
         } catch (\Exception $e) {
             $io->error(
-                    sprintf(
-                            'Failed to clear the language cache (l10n). Error: %s (%d)',
-                            $e->getMessage(),
-                            $e->getCode()
-                    )
+                sprintf(
+                    'Failed to clear the language cache (l10n). Error: %s (%d)',
+                    $e->getMessage(),
+                    $e->getCode()
+                )
             );
-            return static::FAILURE;
+            return Command::FAILURE;
         }
-
     }
 }
