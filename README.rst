@@ -1,3 +1,9 @@
+[![Latest Stable Version](http://poser.pugx.org/cobweb/flush_language_cache/v)](https://packagist.org/packages/cobweb/flush_language_cache)
+[![Total Downloads](http://poser.pugx.org/cobweb/flush_language_cache/downloads)](https://packagist.org/packages/cobweb/flush_language_cache)
+[![Monthly Downloads](http://poser.pugx.org/cobweb/flush_language_cache/d/monthly)](https://packagist.org/packages/cobweb/flush_language_cache)
+[![Daily Downloads](http://poser.pugx.org/cobweb/flush_language_cache/d/daily)](https://packagist.org/packages/cobweb/flush_language_cache)
+[![PHP Version Require](http://poser.pugx.org/cobweb/flush_language_cache/require/php)](https://packagist.org/packages/cobweb/flush_language_cache)
+
 ====================
 Flush Language Cache
 ====================
