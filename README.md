@@ -4,12 +4,10 @@
 [![Daily Downloads](http://poser.pugx.org/cobweb/flush_language_cache/d/daily)](https://packagist.org/packages/cobweb/flush_language_cache)
 [![PHP Version Require](http://poser.pugx.org/cobweb/flush_language_cache/require/php)](https://packagist.org/packages/cobweb/flush_language_cache)
 
-====================
-Flush Language Cache
-====================
+# Flush Language Cache
 
 This small TYPO3 CMS extension adds an item to the flush cache menu to allow for
-flushing only the language cache (``l10n``). This way you can avoid flushing the
+flushing only the language cache (`l10n`). This way you can avoid flushing the
 whole system cache when updating just a couple of localized strings (in locallang
 files).
 
@@ -20,24 +18,22 @@ item will appear in the flush cache menu.
 
 There is also a command-line tool that can be called with:
 
-.. code:: text
-
+```text
    path/to/php path/to/bin/typo3 languagecache:flush
+```
 
 
-User TSconfig
--------------
+## User TSconfig
 
 It is possible to give access to this flush cache option to ordinary backend users
 with the following User TSconfig:
 
-.. code:: typoscript
-
+```typo3_typoscript
    options.clearCache.flushLanguageCache = 1
+```
 
 
-Credits
--------
+## Credits
 
 The icon is based on the following images:
 
