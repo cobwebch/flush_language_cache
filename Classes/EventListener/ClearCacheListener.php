@@ -32,9 +32,6 @@ class ClearCacheListener
 
     /**
      * Adds the flush language cache menu item.
-     *
-     * @param ModifyClearCacheActionsEvent $event
-     * @return void
      */
     public function __invoke(ModifyClearCacheActionsEvent $event): void
     {
@@ -55,7 +52,7 @@ class ClearCacheListener
                     ]
                 );
                 $event->addCacheActionIdentifier(self::$itemKey);
-            } catch (RouteNotFoundException $e) {
+            } catch (RouteNotFoundException) {
                 // Do nothing, i.e. do not add the menu item if the AJAX route cannot be found
             }
         }

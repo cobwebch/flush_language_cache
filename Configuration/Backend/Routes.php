@@ -1,7 +1,10 @@
 <?php
+
+use Cobweb\FlushLanguageCache\Controller\FlushCacheController;
+
 return [
     'flushLanguageCache' => [
             'path' => '/flush_language_cache/clear',
-            'target' => \Cobweb\FlushLanguageCache\Controller\FlushCacheController::class . '::flushCache'
+            'target' => FlushCacheController::class . '::flushCache'
     ]
 ];

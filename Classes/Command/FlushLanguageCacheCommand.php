@@ -34,8 +34,6 @@ class FlushLanguageCacheCommand extends Command
 
     /**
      * Configures the command by setting its name, description and options.
-     *
-     * @return void
      */
     public function configure(): void
     {
@@ -45,11 +43,6 @@ class FlushLanguageCacheCommand extends Command
 
     /**
      * Executes the command to clear the cache.
-     *
-     * @param InputInterface $input
-     * @param OutputInterface $output
-     *
-     * @return int
      */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
