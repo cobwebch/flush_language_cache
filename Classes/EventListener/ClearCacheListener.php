@@ -38,7 +38,7 @@ class ClearCacheListener
         // First check if user has right to access the flush language cache item
         $tsConfig = $this->getBackendUser()->getTSConfig();
         $option = $tsConfig['options.']['clearCache.']['flushLanguageCache'] ?? false;
-        if ((bool)$option || $this->getBackendUser()->isAdmin()) {
+        if ($option || $this->getBackendUser()->isAdmin()) {
             $uriBuilder = GeneralUtility::makeInstance(UriBuilder::class);
             try {
                 $uri = $uriBuilder->buildUriFromRoute('flushLanguageCache');

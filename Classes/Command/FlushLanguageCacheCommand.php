@@ -17,6 +17,7 @@ namespace Cobweb\FlushLanguageCache\Command;
  * The TYPO3 project - inspiring people to share!
  */
 
+use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -29,6 +30,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  *
  * @package Cobweb\FlushLanguageCache\Command
  */
+#[AsCommand('languagecache:flush', 'Clears the language cache (l10n)')]
 class FlushLanguageCacheCommand extends Command
 {
 
