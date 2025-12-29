@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<guides xmlns="https://www.phpdoc.org/guides" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="https://www.phpdoc.org/guides ../vendor/phpdocumentor/guides-cli/resources/schema/guides.xsd"
+        links-are-relative="true">
+    <extension class="\T3Docs\Typo3DocsTheme\DependencyInjection\Typo3DocsThemeExtension"
+               project-home="https://github.com/cobwebch/flush_language_cache"
+               project-repository="https://github.com/cobwebch/flush_language_cache"
+               project-issues="https://github.com/cobwebch/flush_language_cache/issues" edit-on-github-branch="master"
+               edit-on-github="cobwebch/flush_language_cache"
+               typo3-core-preferred="stable"
+               interlink-shortcode="cobweb/flush_language_cache"
+    />
+    <project
+            title="Flush language cache"
+            release="5.0.1"
+            copyright="2014-2025"
+    />
+</guides>
