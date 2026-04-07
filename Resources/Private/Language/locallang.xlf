@@ -9,6 +9,18 @@
 			<trans-unit id="flushLanguageCache.description" xml:space="preserve">
 				<source>Clear the cache for all localized strings (locallang files).</source>
 			</trans-unit>
+			<trans-unit id="flushLanguageCache.error.title" xml:space="preserve">
+				<source>Language cache not cleared</source>
+			</trans-unit>
+			<trans-unit id="flushLanguageCache.error.message" xml:space="preserve">
+				<source>The language cache could not be cleared (reason: %s [%d]).</source>
+			</trans-unit>
+			<trans-unit id="flushLanguageCache.success.title" xml:space="preserve">
+				<source>Language cache cleared</source>
+			</trans-unit>
+			<trans-unit id="flushLanguageCache.success.message" xml:space="preserve">
+				<source>The language cache was cleared.</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

@@ -41,13 +41,12 @@ class ClearCacheListener
         if ($option || $this->getBackendUser()->isAdmin()) {
             $uriBuilder = GeneralUtility::makeInstance(UriBuilder::class);
             try {
-                $uri = $uriBuilder->buildUriFromRoute('flushLanguageCache');
                 $event->addCacheAction(
                     [
                         'id' => self::$itemKey,
                         'title' => 'LLL:EXT:flush_language_cache/Resources/Private/Language/locallang.xlf:flushLanguageCache',
                         'description' => 'LLL:EXT:flush_language_cache/Resources/Private/Language/locallang.xlf:flushLanguageCache.description',
-                        'href' => $uri,
+                        'endpoint' => (string)$uriBuilder->buildUriFromRoute('ajax_clearcache_l10n'),
                         'iconIdentifier' => 'tx_flushlanguagecache_flush'
                     ]
                 );
