@@ -8,10 +8,10 @@ $EM_CONF[$_EXTKEY] = [
     'author' => 'Francois Suter',
     'author_email' => 'typo3@ideative.ch',
     'author_company' => '',
-    'version' => '6.0.0',
+    'version' => '6.0.1',
     'constraints' => [
         'depends' => [
-            'typo3' => '13.4.0-14.4.99',
+            'typo3' => '13.4.0-14.3.99',
             'php' => '8.2.0-8.5.99'
         ],
         'conflicts' => [],
