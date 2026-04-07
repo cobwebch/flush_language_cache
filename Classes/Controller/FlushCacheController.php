@@ -20,59 +20,26 @@ namespace Cobweb\FlushLanguageCache\Controller;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use TYPO3\CMS\Core\Cache\CacheManager;
-use TYPO3\CMS\Core\Http\JsonResponse;
-use TYPO3\CMS\Core\Localization\LanguageService;
+use TYPO3\CMS\Core\Cache\Exception\NoSuchCacheException;
+use TYPO3\CMS\Core\Http\NullResponse;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
+// TODO: remove when dropping support for TYPO3 13
 class FlushCacheController
 {
     /**
-     * Main dispatcher entry method registered as "clearcache_l10n" AJAX end point.
+     * Main dispatcher entry method registered as "flushLanguageCache" end point
      * Flushes the language cache (l10n).
      *
      * @param ServerRequestInterface $request the current request
      * @return ResponseInterface
+     * @throws NoSuchCacheException
      */
     public function flushCache(ServerRequestInterface $request): ResponseInterface
     {
-        $languageService = $this->getLanguageService();
-        try {
-            $cacheFrontend = GeneralUtility::makeInstance(CacheManager::class)->getCache('l10n');
-            $cacheFrontend->flush();
-        } catch (\Exception $e) {
-            $message = sprintf(
-                $languageService->sL(
-                    'LLL:EXT:flush_language_cache/Resources/Private/Language/locallang.xlf:flushLanguageCache.error.message'
-                ),
-                $e->getMessage(),
-                $e->getCode()
-            );
-            return new JsonResponse(
-                [
-                    'success' => false,
-                    'title' => $languageService->sL(
-                        'LLL:EXT:flush_language_cache/Resources/Private/Language/locallang.xlf:flushLanguageCache.error.title'
-                    ),
-                    'message' => $message,
-                ]
-            );
-        }
+        $cacheFrontend = GeneralUtility::makeInstance(CacheManager::class)->getCache('l10n');
+        $cacheFrontend->flush();
 
-        return new JsonResponse(
-            [
-                'success' => true,
-                'title' => $languageService->sL(
-                    'LLL:EXT:flush_language_cache/Resources/Private/Language/locallang.xlf:flushLanguageCache.success.title'
-                ),
-                'message' => $languageService->sL(
-                    'LLL:EXT:flush_language_cache/Resources/Private/Language/locallang.xlf:flushLanguageCache.success.message'
-                ),
-            ]
-        );
-    }
-
-    protected function getLanguageService(): LanguageService
-    {
-        return $GLOBALS['LANG'];
+        return new NullResponse();
     }
 }

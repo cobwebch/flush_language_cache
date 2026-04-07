@@ -21,6 +21,7 @@ use TYPO3\CMS\Backend\Backend\Event\ModifyClearCacheActionsEvent;
 use TYPO3\CMS\Backend\Routing\Exception\RouteNotFoundException;
 use TYPO3\CMS\Backend\Routing\UriBuilder;
 use TYPO3\CMS\Core\Authentication\BackendUserAuthentication;
+use TYPO3\CMS\Core\Information\Typo3Version;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
@@ -40,19 +41,24 @@ class ClearCacheListener
         $option = $tsConfig['options.']['clearCache.']['flushLanguageCache'] ?? false;
         if ($option || $this->getBackendUser()->isAdmin()) {
             $uriBuilder = GeneralUtility::makeInstance(UriBuilder::class);
+            $typo3Version = GeneralUtility::makeInstance(Typo3Version::class);
+            $cacheAction = [
+                'id' => self::$itemKey,
+                'title' => 'LLL:EXT:flush_language_cache/Resources/Private/Language/locallang.xlf:flushLanguageCache',
+                'description' => 'LLL:EXT:flush_language_cache/Resources/Private/Language/locallang.xlf:flushLanguageCache.description',
+                'iconIdentifier' => 'tx_flushlanguagecache_flush'
+            ];
             try {
-                $event->addCacheAction(
-                    [
-                        'id' => self::$itemKey,
-                        'title' => 'LLL:EXT:flush_language_cache/Resources/Private/Language/locallang.xlf:flushLanguageCache',
-                        'description' => 'LLL:EXT:flush_language_cache/Resources/Private/Language/locallang.xlf:flushLanguageCache.description',
-                        'endpoint' => (string)$uriBuilder->buildUriFromRoute('ajax_clearcache_l10n'),
-                        'iconIdentifier' => 'tx_flushlanguagecache_flush'
-                    ]
-                );
+                // TODO: remove else branch when dropping support for TYPO3 13
+                if ($typo3Version->getVersion() === 14) {
+                    $cacheAction['endpoint'] = (string)$uriBuilder->buildUriFromRoute('ajax_clearcache_l10n');
+                } else {
+                    $cacheAction['href'] = $uriBuilder->buildUriFromRoute('flushLanguageCache');
+                }
+                $event->addCacheAction($cacheAction);
                 $event->addCacheActionIdentifier(self::$itemKey);
             } catch (RouteNotFoundException) {
-                // Do nothing, i.e. do not add the menu item if the AJAX route cannot be found
+                // Do nothing, i.e. do not add the menu item if the route cannot be found
             }
         }
     }
