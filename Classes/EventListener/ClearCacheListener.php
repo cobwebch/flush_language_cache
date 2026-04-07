@@ -50,7 +50,7 @@ class ClearCacheListener
             ];
             try {
                 // TODO: remove else branch when dropping support for TYPO3 13
-                if ($typo3Version->getVersion() === 14) {
+                if ($typo3Version->getMajorVersion() === 14) {
                     $cacheAction['endpoint'] = (string)$uriBuilder->buildUriFromRoute('ajax_clearcache_l10n');
                 } else {
                     $cacheAction['href'] = $uriBuilder->buildUriFromRoute('flushLanguageCache');
